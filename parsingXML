@@ -8,10 +8,14 @@ class parsingXML{
 	Element eElement2 = null;
 	
 	public parsingXML() {
+		startParsing();
+	}
+	
+	private void startParsing() {
 		File f = null;
 		try {
 
-			f = new File("C:\\\\Users\\1911\\Desktop\\hyelim\\quiz\\1.XML 파일 분석\\T_BASEFILE_TB.xml");
+			f = new File("C:\\Users\\vkfks\\Downloads\\과제\\1.XML 파일 분석\\T_BASEFILE_TB.xml");
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
 			Document doc = dBuilder.parse(f);
@@ -30,12 +34,12 @@ class parsingXML{
 
 				Element eElement = (Element) nNode;
 
-				f = new File("C:\\Users\\1911\\Desktop\\hyelim\\quiz\\1.XML 파일 분석\\F_"
+				f = new File("C:\\Users\\vkfks\\Downloads\\과제\\1.XML 파일 분석\\F_"
 						+ getTagValue("FILE_ID", eElement) + "_TB.xml");
 				doc = dBuilder.parse(f);
 				nList2 = doc.getElementsByTagName("ROW");
 
-				f = new File("C:\\Users\\1911\\Desktop\\hyelim\\quiz\\1.XML 파일 분석\\P_"
+				f = new File("C:\\Users\\vkfks\\Downloads\\과제\\1.XML 파일 분석\\P_"
 						+ getTagValue("FILE_ID", eElement) + "_TB.xml");
 				doc = dBuilder.parse(f);
 				nList3 = doc.getElementsByTagName("ROW");
@@ -51,8 +55,9 @@ class parsingXML{
 				transformer.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
 				transformer.setOutputProperty(OutputKeys.INDENT, "yes");
 				DOMSource source = new DOMSource(docNew);
+				//xml파일생성
 				StreamResult result = new StreamResult(
-						new FileOutputStream(new File("C:\\Users\\1911\\Desktop\\hyelim\\quiz\\ex1_result\\T_"
+						new FileOutputStream(new File("C:\\Users\\vkfks\\Downloads\\과제\\ex1_result\\T_"
 								+ getTagValue("FILE_ID", eElement) + "_TB.xml")));
 
 				// 파일로 쓰지 않고 콘솔에 찍어보고 싶을 경우 다음을 사용 (디버깅용)
